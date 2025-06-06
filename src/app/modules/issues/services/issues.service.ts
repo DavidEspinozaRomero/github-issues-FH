@@ -30,6 +30,7 @@ export class IssuesService {
   toggleLabel(label: string) {
     const labels = this.selectedLabels();
     labels.has(label) ? labels.delete(label) : labels.add(label);
-    this.selectedLabels.set(labels);
+    this.selectedLabels.set(new Set(labels)); // actualiza y hace la llamada
+    // this.selectedLabels.set(labels); // no hace la llamada
   }
 }
