@@ -1,5 +1,6 @@
 export interface GithubIssue {
     id: number;
+    number: number;
     node_id: string;
     url: string;
     repository_url: string;

@@ -6,4 +6,5 @@ export interface GithubLabel {
     color: string;
     default: boolean;
     description?: string;
+    state: 'all' | 'open' | 'closed';
 }

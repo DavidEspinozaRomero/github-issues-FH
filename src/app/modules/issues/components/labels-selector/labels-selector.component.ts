@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GithubLabel } from '../../interfaces/github-labels.interface';
+import { IssuesService } from '../../services/issues.service';
 
 @Component({
   selector: 'issues-labels-selector',
@@ -10,4 +11,14 @@ import { GithubLabel } from '../../interfaces/github-labels.interface';
 })
 export class LabelsSelectorComponent {
   labels = input.required<GithubLabel[]>();
+
+  issuesService = inject(IssuesService);
+
+  isSelected(label: string) {
+    return this.issuesService.selectedLabels().has(label);
+  }
+
+  toggleLabel(label: string) {
+    this.issuesService.toggleLabel(label);
+  }
 }
